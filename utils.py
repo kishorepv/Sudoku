@@ -19,7 +19,7 @@ def grid_values(grid):
     """
     return {pos:c if c!='.' else "123456789" for pos,c in zip(cross("ABCDEFGHI", "123456789"),grid)}
 
-def solution_string(puzzle):
+def to_string(puzzle):
     """
         Converts a grid (output of 'grid_values' function to  string of puzzle entries from left to right, row-wise.
     """
@@ -105,7 +105,7 @@ def display(values):
     print(grid_string)
     return grid_string
 
-def display_slowmo(puzzle, solution, speed=0.02):
+def display_slowmo(puzzle, solution, delay=0.02):
     """
         Slow motion display of puzzle solution.
     """
@@ -116,7 +116,7 @@ def display_slowmo(puzzle, solution, speed=0.02):
     print(header_str)
     print("Problem: ")
     display(puzzle)
-    time.sleep(1)
+    time.sleep(2)
     for pos in all_positions():
         if puzzle[pos]=='.':
             puzzle[pos]=solution[pos]
@@ -124,7 +124,7 @@ def display_slowmo(puzzle, solution, speed=0.02):
             print(header_str)
             print("Solution: ")
             display(puzzle)
-            time.sleep(speed)
+            time.sleep(delay)
     print("\n")
 
 
