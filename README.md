@@ -1,5 +1,5 @@
 
-## Sudoku puzzle solver.
+## Sudoku puzzle solver
 ![demo.gif](https://github.com/kishorepv/Sudoku/blob/master/demo.gif)
 
 ### Files
