@@ -1,9 +1,9 @@
-
-import copy
 from strategies import *
 from utils import *
+
 import sys
 import argparse
+import copy
 
 def reduce_puzzle(values, strategies):
     """
