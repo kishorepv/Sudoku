@@ -6,7 +6,8 @@
 
 * `sudoku.py` - Main script invoked by the user.
 * `strategies.py` - Strategies used to reduce the search space of the solution.  
-  The implemented strategies are:  
+
+  The implemented strategies are:
    1. Single Possibility Rule  
    2. Only Choice Rule  
    3. Naked Twins Elimination Rule  
