@@ -26,18 +26,11 @@ def reduce_puzzle(values, strategies):
             return False
     return values
 
-
-def test_hidden_xs(values):
-    values_copy=copy.deepcopy(values)
-    values=hidden_twins(values)
-    values_copy=hidden_xs(values_copy, 2)
-    assert(values==values_copy)
-
 def search(values):
     """
         DFS search over the simplified sudoku solution search space
     """
-    strategies=[eliminate, only_choice, naked_twins, sub_group,hidden_twins]
+    strategies=[eliminate, only_choice, sub_group,hidden_twins, naked_twins,]# naked_triplets]
     values=reduce_puzzle(values, strategies)
     if values is False:
         return False

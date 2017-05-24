@@ -66,12 +66,12 @@ def get_peers(pos):
     """
     return get_self_and_peers()-set([pos])
 
-def remove_pair(peer_group,vv,values):
+def remove_naked_ns(peer_group,vv,values):
     """
-        Removes any value of 'vv' from the puzzle (values) in all the 'peer_group' boxss
+        Removes any value of 'vv' from the puzzle (values) in all the 'peer_group' boxes
     """
     for  peer in peer_group:
-        if values[peer]!=vv:
+        if set(values[peer])!=set(vv):
             for v in vv:
                 if v in values[peer]:
                     values[peer]=values[peer].replace(v, '')
@@ -127,7 +127,18 @@ def display_slowmo(puzzle, solution, delay=0.02):
             time.sleep(delay)
     print("\n")
 
+def test_hidden_xs(values):
+    values_copy=copy.deepcopy(values)
+    values=hidden_twins(values)
+    values_copy=hidden_xs(values_copy, 2)
+    assert(values==values_copy)
 
+def test_naked_n(values):
+    values_copy=copy.deepcopy(values)
+    values=naked_twins(values)
+    values_copy=naked_n(values_copy, 2)
+    assert(values==values_copy)
+    
 def problems():
     """
         Sample puzzles with solutions.

@@ -14,12 +14,41 @@ def naked_twins(values):
         # from the 3x3 square peers if the naked twins are in the same 3x3 sub-square
         for peer_group in [row_p,col_p]:
             peer_vals=[values[peer] for peer in set(peer_group)-set([k])]
-            if vv in peer_vals:
+            if vv in peer_vals: # naked twins exist
                 twin_index=peer_vals.index(vv)
-                values=remove_pair(peer_group,vv,values)
+                values=remove_naked_ns(peer_group,vv,values)
                 if twin_index in sq_p:
-                    values=remove_pair(sq_p,vv,values)
+                    values=remove_naked_ns(sq_p,vv,values)
     return values
+
+def naked_triplets(puzzle):
+    """
+        Eliminate non-possible entries using "Naked Triplets elimination" rule.
+    """
+    puzzle=naked_n(puzzle,3)
+    return puzzle
+
+
+def naked_n(puzzle, n):
+    """
+        This is a generalization of the "Naked Twins Elimnation" rule.
+        Elimnates naked singlets/twins/triplets/.../nonuplets (specified by 'n').
+    """
+    x=max(1,min(n,9))
+    all_n_tuples=[pos for pos,val in puzzle.items() if len(val)==n]
+    for pos in all_n_tuples:
+        vn=puzzle[pos]
+        row_p,col_p,sq_p=get_repeat_peers(pos)
+        for peer_group in [row_p,col_p]:
+            peer_values=[puzzle[k] for k in set(peer_group)-set([pos])]
+            if peer_values.count(vn)==(n-1): # naked n exist
+                naked_ns=[k for k in peer_group if puzzle[k]==vn]
+                puzzle=remove_naked_ns(peer_group, vn, puzzle)
+                if all([each_naked in sq_p for each_naked in naked_ns]):
+                    puzzle=remove_naked_ns(sq_p, vn, puzzle)
+    return puzzle
+
+
 
 def eliminate(values):
     """
