@@ -12,9 +12,10 @@
    2. Only Choice Rule  
    3. Naked Twins Elimination Rule  
    4. Sub-Group Exclusion Rule  
-   5. Hidden Twins Elimination Rule  
-   6. Generalized version of "Hidden Twins Elimnation" rule to eliminate singlets/twins/.../nounplets
-   7. Generalization of "Naked Twins Elimnation" rule to eliminate singlets/twins/.../nounplets 
+   5. Hidden Twins Elimination Rule 
+   6. Naked Triplets Elimination Rule  
+   7. Generalized version of "Hidden Twins Elimnation" rule to eliminate singlets/twins/.../nounplets
+   8. Generalization of "Naked Twins Elimnation" rule to eliminate singlets/twins/.../nounplets 
      
 
 * `utils.py` - Helper functions for computation and visualization.
